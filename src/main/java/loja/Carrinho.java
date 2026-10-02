@@ -11,4 +11,10 @@ public class Carrinho {
     public void adicionar(Item item) {
         itens.add(item);
     }
+
+    public BigDecimal total() {
+        return itens.stream()
+                .map(i -> i.preco().multiply(BigDecimal.valueOf(i.quantidade())))
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
 }
