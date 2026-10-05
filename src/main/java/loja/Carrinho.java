@@ -12,6 +12,10 @@ public class Carrinho {
         itens.add(item);
     }
 
+    public void remover(String nome) {
+        itens.removeIf(i -> i.nome().equals(nome));
+    }
+
     public BigDecimal total() {
         return itens.stream()
                 .map(i -> i.preco().multiply(BigDecimal.valueOf(i.quantidade())))
